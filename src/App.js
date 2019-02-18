@@ -1,23 +1,49 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
-
+import hunter from './hunter.png';
+import Xp from './components/Xp';
+import Form from './components/Form';
+// App Goal:
+// To have a state, and a local data state with functions as props with proper data flow.  COMPLETED
+// then forms changing state too
+// component has local state tracking form
+// then api
 class App extends Component {
+  state = {
+    characters: [
+      {
+        "firstname": "John",
+        "lastname": "Snow"
+      }
+    ],
+    number: 117
+  }
+  modNum = (n)=> {
+    n*=4;
+    this.setState(
+      {
+        number:n
+      }
+    )
+  }
+
   render() {
     return (
       <div className="App">
+        <Xp num={this.state.number} modifize={this.modNum}/>
+        <Form />
         <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
+          <img src={hunter} className="App-logo" alt="logo" />
           <p>
-            Edit <code>src/App.js</code> and save to reload.
+            
           </p>
           <a
             className="App-link"
-            href="https://reactjs.org"
+            href="https://maxjann.com"
             target="_blank"
             rel="noopener noreferrer"
           >
-            Learn React
+            Jann Software
           </a>
         </header>
       </div>
