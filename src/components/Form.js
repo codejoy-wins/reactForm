@@ -9,23 +9,27 @@ export class Form extends Component {
         }
         this.state = this.initialState;
     }
-    tracker = e => {
-        const { name, value } = e.target;
 
-        this.setState(
-            {
-                [name]: value
-            }
-        )
-    }
+    tracker2 = e => {
+      console.log(`tracking ${e} from form.js`);
+      const { name, value } = e.target;
+  
+      this.setState(
+          {
+              [name]: value
+          }
+      )
+  }
+    
   render() {
 
     const {name, job } = this.state;
+    const { track } = this.props;
     return (
       <form>
-          name: <input type="text" name="name" value ={name} onChange={this.tracker}></input>
-          job: <input type="text" name="job" value ={job} onChange={this.tracker}></input>
-        <button>Obey</button>
+          name: <input type="text" name="name" value ={name} onChange={this.tracker2}></input>
+          job: <input type="text" name="job" value ={job} onChange={this.tracker2}></input>
+        <button onClick={()=>track(this.state)} > Obey</button>
       </form>
     )
   }

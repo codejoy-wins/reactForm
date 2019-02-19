@@ -12,8 +12,8 @@ class App extends Component {
   state = {
     characters: [
       {
-        "firstname": "John",
-        "lastname": "Snow"
+        "name": "John",
+        "job": "Snow"
       }
     ],
     number: 117
@@ -27,11 +27,23 @@ class App extends Component {
     )
   }
 
+  tracker = e => {
+    const { name, value } = e.target;
+    console.log(`tracking ${e} from app.js`)
+    this.setState(
+        {
+            [name]: value
+        }
+    )
+}
+
+
+// bind this to tracker?
   render() {
     return (
       <div className="App">
         <Xp num={this.state.number} modifize={this.modNum}/>
-        <Form />
+        <Form track={this.tracker}/>
         <header className="App-header">
           <img src={hunter} className="App-logo" alt="logo" />
           <p>
